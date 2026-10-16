@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CREDPLUS | Crédito para CLT, INSS e servidores públicos</title>
+<meta name="description" content="Simule seu empréstimo consignado com a CREDPLUS e fale direto com um atendente pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1F6FF; --surface:#FFFFFF; --text:#12263A; --muted:#4F6280; --line:#D3E0F8;
+  --brand:#0A5CFF; --brand-ink:#FFFFFF; --wa:#1FA855; --gold:#FFC83D; --deep:#0A2A8F; --deep-text:#EAF3FF; --hero-a:#1470FF; --hero-b:#0830B5; --pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='130' height='130'%3E%3Ccircle cx='30' cy='30' r='16' fill='none' stroke='white' stroke-opacity='.2' stroke-width='3'/%3E%3Ctext x='30' y='36' font-size='15' font-weight='800' text-anchor='middle' fill='white' fill-opacity='.22' font-family='sans-serif'%3ER$%3C/text%3E%3Crect x='72' y='72' width='38' height='22' rx='4' transform='rotate(-12 91 83)' fill='none' stroke='white' stroke-opacity='.2' stroke-width='3'/%3E%3C/svg%3E");
+  --head:'Sora',system-ui,sans-serif; --body:'Nunito Sans',system-ui,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1A22; --surface:#12262F; --text:#E8F1EE; --muted:#9DB3B3; --line:#223A44;
+    --brand:#6FA8FF; --brand-ink:#06143A; --wa:#2BC067; --deep:#071217; --deep-text:#E8F1EE; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1A22; --surface:#12262F; --text:#E8F1EE; --muted:#9DB3B3; --line:#223A44;
+  --brand:#022d6d; --brand-ink:#06143A; --wa:#2BC067; --deep:#071217; --deep-text:#E8F1EE; color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6}
+h1,h2,h3{font-family:var(--head);line-height:1.15;margin:0}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;margin-bottom:12px}
+.lead{color:var(--muted);max-width:60ch}
+
+header .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:18px;padding-bottom:18px}
+.logo{font-family:var(--head);font-weight:800;font-size:1.4rem;letter-spacing:-.02em;text-decoration:none}
+.logo b{color:var(--brand)}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:#fff;font-weight:700;text-decoration:none;padding:13px 22px;border-radius:999px;border:0;font-size:1rem;cursor:pointer;font-family:var(--body)}
+.btn:hover{filter:brightness(1.07)}
+.btn svg{width:20px;height:20px;fill:currentColor}
+
+.hero{padding:48px 0 72px;background:var(--pat),linear-gradient(135deg,var(--hero-a),var(--hero-b));color:#fff;border-radius:0 0 36px 36px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+.hero .lead{color:#DCE8FF}
+.art svg{width:100%;height:auto;display:block}
+.picker{color:var(--text)}
+@media (max-width:760px){.hero-grid{grid-template-columns:1fr}.art{max-width:360px;margin:0 auto}}
+.hero h1{font-size:clamp(2.1rem,6vw,3.6rem);font-weight:800;letter-spacing:-.03em;max-width:16ch}
+.hero .lead{margin-top:18px;font-size:1.12rem}
+.picker{margin-top:34px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px}
+.picker h2{font-size:1.15rem;margin-bottom:14px}
+.profiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.profile{display:flex;flex-direction:column;gap:4px;text-decoration:none;border:2px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--bg);transition:border-color .15s,transform .15s}
+.profile:hover{border-color:var(--wa);transform:translateY(-2px)}
+.profile strong{font-family:var(--head);font-size:1.05rem}
+.profile span{color:var(--muted);font-size:.93rem}
+.note{margin-top:14px;color:var(--muted);font-size:.9rem}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;margin-top:32px;list-style:none;padding:0;counter-reset:s}
+.steps li{counter-increment:s;border-top:3px solid var(--brand);padding-top:14px}
+.steps li::before{content:counter(s);font-family:var(--head);font-weight:800;font-size:1.6rem;color:var(--brand)}
+.steps h3{font-size:1.1rem;margin:4px 0 6px}
+.steps p{color:var(--muted)}
+
+.safe{background:var(--deep);color:var(--deep-text)}
+.safe .lead{color:inherit;opacity:.85}
+.safe-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:28px}
+.safe-grid div{border-left:3px solid var(--gold);padding-left:16px}
+.safe-grid h3{font-size:1.05rem;margin-bottom:4px}
+.safe-grid p{opacity:.85;font-size:.97rem}
+
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:700;font-family:var(--head);font-size:1.02rem}
+details p{margin-top:10px;color:var(--muted)}
+
+.cta{text-align:center;background:var(--pat),linear-gradient(135deg,var(--hero-a),var(--hero-b));color:#fff}
+.cta .lead{margin:0 auto 24px;color:#DCE8FF}
+.duo{width:230px;height:auto;display:block;margin:0 auto 14px}
+footer{border-top:1px solid var(--line);padding:30px 0 90px;color:var(--muted);font-size:.88rem}
+footer p+p{margin-top:8px}
+
+.float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:5;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<g id="note"><rect x="-100" y="-50" width="200" height="100" rx="10" fill="currentColor"/><rect x="-90" y="-40" width="180" height="80" rx="6" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2"/><circle r="24" fill="#fff" fill-opacity=".85"/><text y="7" text-anchor="middle" font-size="20" font-weight="800" fill="#12263A" font-family="Sora,sans-serif">R$</text></g>
+<g id="coin"><circle r="22" fill="#F7C948"/><circle r="16" fill="none" stroke="#C99A1A" stroke-width="2"/><text y="6" text-anchor="middle" font-size="15" font-weight="800" fill="#8A6208" font-family="Sora,sans-serif">R$</text></g>
+<g id="woman"><path d="M-58 0C-58-70-30-84 0-84S58-70 58 0Z" fill="#FFC83D"/><rect x="-38" y="-132" width="76" height="64" rx="30" fill="#2A1A14"/><rect x="-9" y="-100" width="18" height="22" fill="#9A5B2E"/><circle cy="-122" r="34" fill="#9A5B2E"/><path d="M-37-122a37 37 0 0 1 74 0c-8-16-22-20-37-20s-29 4-37 20Z" fill="#2A1A14"/><circle cx="-12" cy="-120" r="3" fill="#2A1A14"/><circle cx="12" cy="-120" r="3" fill="#2A1A14"/><path d="M-12-107q12 12 24 0" fill="none" stroke="#2A1A14" stroke-width="3" stroke-linecap="round"/></g>
+<g id="man"><path d="M-62 0C-62-70-34-84 0-84S62-70 62 0Z" fill="#fff"/><path d="M0-84l-10 14 10 40 10-40Z" fill="#0A2A8F"/><rect x="-9" y="-100" width="18" height="22" fill="#E2A97A"/><circle cy="-122" r="34" fill="#E2A97A"/><path d="M-35-126a35 35 0 0 1 70 0c-10-10-22-14-35-14s-25 4-35 14Z" fill="#2A1A14"/><circle cx="-12" cy="-120" r="3" fill="#2A1A14"/><circle cx="12" cy="-120" r="3" fill="#2A1A14"/><path d="M-12-107q12 12 24 0" fill="none" stroke="#2A1A14" stroke-width="3" stroke-linecap="round"/></g>
+</defs></svg>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#topo">CRED<b>PLUS</b></a>
+    <a class="btn wa" data-msg="Olá! Vim pelo site da CREDPLUS e gostaria de falar com um atendente." href="#">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<main id="topo">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid"><div>
+      <h1>Crédito consignado com atendimento direto no WhatsApp.</h1>
+      <p class="lead">Para trabalhadores CLT, aposentados e pensionistas do INSS, servidores públicos e outros perfis. Você conversa com uma pessoa, tira suas dúvidas e decide com calma.</p>
+      </div>
+      <div class="art"><svg viewBox="0 0 520 420" role="img" aria-label="Pessoas sorrindo com notas e moedas de real"><circle cx="260" cy="215" r="195" fill="#fff" fill-opacity=".1"/><circle cx="260" cy="215" r="135" fill="#fff" fill-opacity=".12"/><use href="#note" transform="translate(250 190) rotate(-18)" style="color:#F0A63A"/><use href="#note" transform="translate(262 205) rotate(-3)" style="color:#8E5BD9"/><use href="#note" transform="translate(275 222) rotate(12)" style="color:#2E9E6B"/><use href="#coin" x="215" y="335"/><use href="#coin" x="300" y="350"/><use href="#coin" x="258" y="370"/><use href="#woman" x="115" y="412"/><use href="#man" x="410" y="412"/><g transform="translate(395 62)"><rect x="-72" y="-32" width="144" height="64" rx="20" fill="#25D366"/><path d="M-22 30l-10 24 30-24Z" fill="#25D366"/><text y="6" text-anchor="middle" font-size="17" font-weight="800" fill="#fff" font-family="Sora,sans-serif">Vamos simular?</text></g></svg></div>
+      </div>
+
+      <div class="picker" id="perfil">
+        <h2>Qual é o seu perfil? Toque para iniciar a simulação.</h2>
+        <div class="profiles">
+          <a class="profile wa" data-msg="Olá! Sou trabalhador CLT e quero simular um empréstimo com a CREDPLUS." href="#"><strong>Trabalhador CLT</strong><span>Consignado com desconto em folha</span></a>
+          <a class="profile wa" data-msg="Olá! Sou aposentado ou pensionista do INSS e quero simular um empréstimo com a CREDPLUS." href="#"><strong>Aposentado ou pensionista INSS</strong><span>Desconto direto no benefício</span></a>
+          <a class="profile wa" data-msg="Olá! Sou servidor público e quero simular um empréstimo com a CREDPLUS." href="#"><strong>Servidor público</strong><span>Municipal, estadual ou federal</span></a>
+          <a class="profile wa" data-msg="Olá! Quero saber quais opções de empréstimo a CREDPLUS tem para o meu perfil." href="#"><strong>Outro perfil</strong><span>Conte sua situação ao atendente</span></a>
+        </div>
+        <p class="note">Ao tocar, o WhatsApp abre com uma mensagem pronta. Você só precisa enviar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Como funciona</h2>
+      <p class="lead">Três passos, sem burocracia no começo.</p>
+      <ol class="steps">
+        <li><h3>Escolha seu perfil</h3><p>Selecione CLT, INSS, servidor ou outro e abra a conversa no WhatsApp.</p></li>
+        <li><h3>Receba a simulação</h3><p>Um atendente apresenta valores, prazo e parcelas conforme sua análise de crédito.</p></li>
+        <li><h3>Decida e contrate</h3><p>Se as condições fizerem sentido, você segue com a contratação. Se não, não há compromisso.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="safe">
+    <div class="wrap">
+      <h2>Segurança em primeiro lugar</h2>
+      <p class="lead">Golpes com empréstimo são comuns. Veja como se proteger ao falar com qualquer financeira.</p>
+      <div class="safe-grid">
+        <div><h3>Sem pagamento antecipado</h3><p>Desconfie de quem pede depósito para "liberar" o crédito. A contratação correta não exige isso.</p></div>
+        <div><h3>Nunca informe senhas</h3><p>Não peça nem envie senha do banco, senha do Meu INSS ou códigos recebidos por SMS.</p></div>
+        <div><h3>Contrato claro</h3><p>Antes de assinar, confira valor total, número de parcelas e taxa de juros informados.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Perguntas frequentes</h2>
+      <div style="margin-top:20px">
+        <details><summary>Quem pode pedir o empréstimo?</summary><p>Trabalhadores CLT, aposentados e pensionistas do INSS, servidores públicos e outros perfis. A aprovação depende da análise de crédito e das regras de cada modalidade.</p></details>
+        <details><summary>Quais documentos vou precisar?</summary><p>Em geral, documento oficial com foto e comprovante de renda ou benefício. O atendente confirma a lista exata pelo WhatsApp.</p></details>
+        <details><summary>Quanto tempo leva para ter uma resposta?</summary><p>A simulação inicial é feita na conversa. O prazo de análise e liberação varia conforme o perfil e a modalidade.</p></details>
+        <details><summary>O atendimento tem custo?</summary><p>Não. Conversar e simular não gera nenhuma cobrança.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <svg class="duo" viewBox="0 -170 300 180" aria-hidden="true"><use href="#woman" x="95"/><use href="#man" x="205"/></svg>
+      <h2>Pronto para simular?</h2>
+      <p class="lead">Fale agora com a equipe da CREDPLUS.</p>
+      <a class="btn wa" data-msg="Olá! Vim pelo site da CREDPLUS e quero fazer uma simulação." href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.8 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.8-.1 1.5Z"/></svg>
+        Chamar no WhatsApp
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>CREDPLUS</strong> · CNPJ 00.000.000/0001-00 · Endereço da empresa, Cidade/UF</p>
+    <p>Crédito sujeito a análise e aprovação. Taxas, prazos e condições variam conforme o perfil do cliente e a modalidade. Leia o contrato com atenção antes de contratar.</p>
+    <p>© <span id="ano"></span> CREDPLUS. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<a class="btn float wa" data-msg="Olá! Vim pelo site da CREDPLUS e gostaria de falar com um atendente." href="#" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.8 14.1c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.2.3.7 1.2 1.5 1.9 1 .9 1.9 1.2 2.2 1.3.3.1.4.1.6-.1l.8-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.8-.1 1.5Z"/></svg>
+  WhatsApp
+</a>
+
+<script>
+  // ALTERE AQUI: número do WhatsApp comercial com 55 + DDD + número, só dígitos
+  var WHATSAPP = "5511981513724";
+
+  document.querySelectorAll("a.wa").forEach(function(a){
+    a.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(a.dataset.msg);
+    a.target = "_blank";
+    a.rel = "noopener noreferrer";
+  });
+  document.getElementById("ano").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
